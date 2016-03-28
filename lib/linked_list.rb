@@ -10,7 +10,8 @@ attr_reader :head, :items
     if head == nil
       @head = Node.new(data)
       @count += 1
-    else
+    elsif head.data != nil
+      require "pry"; binding.pry
       head
     end
   end
@@ -25,8 +26,8 @@ attr_reader :head, :items
 
 
 end
-# require "./lib/linked_list"
-# > list = LinkedList.new
+#
+# list = LinkedList.new
 # => <LinkedList head=nil #45678904567>
 # > list.head
 # => nil
@@ -34,9 +35,15 @@ end
 # => "doop"
 # > list
 # => <LinkedList head=<Node data="doop" next_node=nil #5678904567890> #45678904567>
+# > list.head
+# => <Node data="doop" next_node=nil #5678904567890>
 # > list.head.next_node
 # => nil
+# > list.append("deep")
+# => "deep"
+# > list.head.next_node
+# => <Node data="deep" next_node=nil #5678904567890>
 # > list.count
-# => 1
+# => 2
 # > list.to_string
-# => "doop"
+# => "doop deep"

@@ -37,5 +37,14 @@ class LinkedListTest < Minitest::Test
     list = LinkedList.new
     list.append('deep')
     assert_equal 'deep', list.to_string
-  end 
+  end
+
+  def test_can_append_the_list_more_than_once
+    list = LinkedList.new
+    list.append('doop')
+    assert_equal 'doop', list.head.data
+    assert_equal nil, list.head.next_node
+    list.append('deep')
+    assert_equal '', list.head.next_node
+  end
 end
