@@ -1,15 +1,29 @@
 class LinkedList
-attr_reader :head
+attr_reader :head, :items
+
   def initialize
     @head = nil
+    @count = 0
   end
-  #   @node = Node.new(data)
-  #   @data = data
-  # end
-  #
-  # def append
-  # end
-#when i call list.append, adds data to the array
+
+  def append(data)
+    if head == nil
+      @head = Node.new(data)
+      @count += 1
+    else
+      head
+    end
+  end
+
+  def count
+    @count
+  end
+
+  def to_string
+    head.data
+  end
+
+
 end
 # require "./lib/linked_list"
 # > list = LinkedList.new

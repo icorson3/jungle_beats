@@ -5,7 +5,7 @@ require './lib/node.rb'
 class NodeTest < Minitest::Test
 
   def test_node_class_exists
-    node = Node.new
+    node = Node.new('plop')
     assert node
   end
 
