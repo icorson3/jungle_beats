@@ -24,7 +24,7 @@ class LinkedListTest < Minitest::Test
   def test_next_node_is_nil_on_list
     list = LinkedList.new
     list.append('doop')
-    assert_equal nil, list.head.next_node
+    assert_equal nil , list.head.next_node
   end
 
   def test_1_item_in_list
@@ -38,13 +38,35 @@ class LinkedListTest < Minitest::Test
     list.append('deep')
     assert_equal 'deep', list.to_string
   end
-
+# #
+# #   def test_can_find_a_tail
+#     list = LinkedList.new(nil)
+#     assert_equal nil, list.tail.data
+#     assert_equal nil, list.tail.next_node
+#   end
+# #
   def test_can_append_the_list_more_than_once
     list = LinkedList.new
     list.append('doop')
     assert_equal 'doop', list.head.data
     assert_equal nil, list.head.next_node
     list.append('deep')
-    assert_equal '', list.head.next_node
+    assert_equal 'deep', list.head.next_node.data
   end
+
+  def test_can_count_multiple_items
+    list = LinkedList.new
+    list.append('plop')
+    list.append('laugh')
+    list.append('bing')
+    assert_equal 3, list.count
+  end
+
+  def test_to_string_returns_a_string_of_all_data
+    list = LinkedList.new
+    list.append('plop')
+    list.append('laugh')
+    assert_equal "plop laugh", list.to_string
+  end
+
 end

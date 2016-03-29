@@ -1,18 +1,31 @@
+require_relative 'node.rb'
+
 class LinkedList
-attr_reader :head, :items
+attr_reader :head
 
   def initialize
     @head = nil
     @count = 0
   end
 
+  def head
+    @head
+  end
+
   def append(data)
-    if head == nil
+    @count += 1
+    if @head.nil?
       @head = Node.new(data)
-      @count += 1
-    elsif head.data != nil
-      require "pry"; binding.pry
-      head
+    else
+      append_node(@head, data)
+    end
+  end
+
+  def append_node(current_node, data)
+    if current_node.next_node == nil
+      current_node.next_node = Node.new(data)
+    else
+      append_node(current_node.next_node, data)
     end
   end
 
@@ -21,29 +34,31 @@ attr_reader :head, :items
   end
 
   def to_string
-    head.data
+    if @count == 1
+      head.data
+    else
+    head.data + " " + head.next_node.data
+  end
   end
 
-
+# # list = LinkedList.new
+# # => <LinkedList head=nil #45678904567>
+# # > list.head
+# # => nil
+# # > list.append("doop")
+# # => "doop"
+# # > list
+# # => <LinkedList head=<Node data="doop" next_node=nil #5678904567890> #45678904567>
+# # > list.head
+# # => <Node data="doop" next_node=nil #5678904567890>
+# # > list.head.next_node
+# # => nil
+# # > list.append("deep")
+# # => "deep"
+# # > list.head.next_node
+# # => <Node data="deep" next_node=nil #5678904567890>
+# # > list.count
+# # => 2
+# # > list.to_string
+# # => "doop deep"
 end
-#
-# list = LinkedList.new
-# => <LinkedList head=nil #45678904567>
-# > list.head
-# => nil
-# > list.append("doop")
-# => "doop"
-# > list
-# => <LinkedList head=<Node data="doop" next_node=nil #5678904567890> #45678904567>
-# > list.head
-# => <Node data="doop" next_node=nil #5678904567890>
-# > list.head.next_node
-# => nil
-# > list.append("deep")
-# => "deep"
-# > list.head.next_node
-# => <Node data="deep" next_node=nil #5678904567890>
-# > list.count
-# => 2
-# > list.to_string
-# => "doop deep"
