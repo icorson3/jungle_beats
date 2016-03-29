@@ -1,7 +1,7 @@
 require_relative 'node.rb'
 
 class LinkedList
-attr_reader :head
+attr_accessor :head, :data_array, :position
 
   def initialize
     @head = nil
@@ -14,10 +14,10 @@ attr_reader :head
 
   def append(data)
     @count += 1
-    if @head.nil?
+    if head.nil?
       @head = Node.new(data)
     else
-      append_node(@head, data)
+    append_node(head, data)
     end
   end
 
@@ -34,31 +34,43 @@ attr_reader :head
   end
 
   def to_string
-    if @count == 1
+    if @head == nil
       head.data
     else
-    head.data + " " + head.next_node.data
-  end
+      data_array = []
+      nodes_are_strings(head, data_array)
+    end
+    data_array.join(' ')
   end
 
-# # list = LinkedList.new
-# # => <LinkedList head=nil #45678904567>
-# # > list.head
-# # => nil
-# # > list.append("doop")
-# # => "doop"
-# # > list
-# # => <LinkedList head=<Node data="doop" next_node=nil #5678904567890> #45678904567>
-# # > list.head
-# # => <Node data="doop" next_node=nil #5678904567890>
-# # > list.head.next_node
-# # => nil
-# # > list.append("deep")
-# # => "deep"
-# # > list.head.next_node
-# # => <Node data="deep" next_node=nil #5678904567890>
-# # > list.count
-# # => 2
-# # > list.to_string
-# # => "doop deep"
-end
+  def nodes_are_strings(current_node, data_array)
+    data_array << current_node.data
+    if current_node.next_node == nil
+      data_array
+    else
+      nodes_are_strings(current_node.next_node, data_array)
+    end
+  end
+
+  # def insert(position, data)
+  # end
+
+  def insert(position, data)
+    new_node = Node.new(data)
+    current_node = head
+    count = 0
+    until count == position
+      count += 1
+      current_node = current_node.next_node
+    end
+      new_node.next_node = current_node
+
+      count = 0
+      current_node = head
+      until count == position -1
+        count += 1
+        current_node = current_node.next_node
+      end
+      current_node.next_node = new_node
+    end
+  end

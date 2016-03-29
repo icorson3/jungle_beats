@@ -66,7 +66,16 @@ class LinkedListTest < Minitest::Test
     list = LinkedList.new
     list.append('plop')
     list.append('laugh')
-    assert_equal "plop laugh", list.to_string
+    list.append('bing')
+    assert_equal 'plop laugh bing', list.to_string
   end
 
+  def test_insert_method_can_insert_in_position
+    list = LinkedList.new
+    list.append('dop')
+    list.append('plop')
+    list.append('suu')
+    list.insert(1, 'woo')
+    assert_equal 'dop woo plop suu', list.to_string
+  end
 end
