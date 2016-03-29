@@ -73,4 +73,22 @@ attr_accessor :head, :data_array, :position
       end
       current_node.next_node = new_node
     end
+  #   list.to_string
+  #  => "deep woo shi shu blop"
+  #  > list.find(2, 1)
+  #  => "shi"
+  #  > list.find(1, 3)
+  #  => "woo shi shu"
+  #  > list.includes?("deep")
+  #  => true
+  #  > list.includes?("dep")
+  #  => false
+  #  > list.pop
+  #  => "blop"
+  #  > list.pop
+  #  => "shu"
+  #  > list.to_string
+  #  => "deep woo shi"
+    # def include?(data)
+    # end
   end

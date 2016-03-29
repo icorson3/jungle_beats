@@ -78,4 +78,25 @@ class LinkedListTest < Minitest::Test
     list.insert(1, 'woo')
     assert_equal 'dop woo plop suu', list.to_string
   end
+
+  def test_list_can_have_a_lot_of_nodes
+    list = LinkedList.new
+    list.append('deep')
+    list.append('woo')
+    list.append('shi')
+    list.append('shu')
+    list.append('blop')
+    assert_equal 'deep woo shi shu blop', list.to_string
+  end
+
+  def test_can_find_by_position
+
+  end
+
+  # def test_it_includes_the_data
+  #   list = LinkedList.new
+  #   list.append('dop')
+  #   list.append('plop')
+  #   assert_equal true, list.include?('plop')
+  # end
 end
