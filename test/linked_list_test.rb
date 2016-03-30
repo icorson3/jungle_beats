@@ -89,14 +89,44 @@ class LinkedListTest < Minitest::Test
     assert_equal 'deep woo shi shu blop', list.to_string
   end
 
-  def test_can_find_by_position
-
+  def test_can_find_by_position_and_pop_one
+    list = LinkedList.new
+    list.append('deep')
+    list.append('woo')
+    list.append('shi')
+    list.append('shu')
+    list.append('blop')
+    assert_equal "shi", list.find(2,1)
   end
 
-  # def test_it_includes_the_data
-  #   list = LinkedList.new
-  #   list.append('dop')
-  #   list.append('plop')
-  #   assert_equal true, list.include?('plop')
-  # end
+  def test_can_find_by_position_and_pop_two
+    list = LinkedList.new
+    list.append('deep')
+    list.append('woo')
+    list.append('shi')
+    list.append('shu')
+    list.append('blop')
+    assert_equal "woo shi shu", list.find(1,3)
+  end
+
+
+  def test_it_includes_the_data
+    list = LinkedList.new
+    list.append('deep')
+    list.append('woo')
+    list.append('shi')
+    list.append('shu')
+    list.append('blop')
+    assert_equal true, list.include?('deep')
+  end
+
+  def test_list_does_not_include_the_data
+    list = LinkedList.new
+    list.append('deep')
+    list.append('woo')
+    list.append('shi')
+    list.append('shu')
+    list.append('blop')
+    assert_equal false, list.include?('dep')
+  end
 end

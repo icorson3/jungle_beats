@@ -52,9 +52,6 @@ attr_accessor :head, :data_array, :position
     end
   end
 
-  # def insert(position, data)
-  # end
-
   def insert(position, data)
     new_node = Node.new(data)
     current_node = head
@@ -73,6 +70,36 @@ attr_accessor :head, :data_array, :position
       end
       current_node.next_node = new_node
     end
+
+    def find(position, amount)
+      current_node = head
+      count = 0
+      until count == position
+        count += 1
+        current_node = current_node.next_node
+      end
+      string = ''
+      amount.times do
+      string << current_node.data + ' '
+      current_node = current_node.next_node
+    end
+    string.strip
+  end
+
+  def include?(word)
+    current_node = head
+    if
+    until current_node.data == word
+      current_node = current_node.next_node
+    end
+    current_node.data == word
+  else
+    false
+  end
+  end
+
+
+
   #   list.to_string
   #  => "deep woo shi shu blop"
   #  > list.find(2, 1)
