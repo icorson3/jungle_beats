@@ -89,6 +89,16 @@ class LinkedListTest < Minitest::Test
     assert_equal 'deep woo shi shu blop', list.to_string
   end
 
+  def test_list_can_be_prepended_with_one_item
+    list = LinkedList.new
+    list.append('plop')
+    assert_equal "plop", list.to_string
+    list.append('suu')
+    list.prepend('dop')
+    assert_equal 'dop plop suu', list.to_string
+    assert_equal 3, list.count 
+  end
+
   def test_can_find_by_position_and_pop_one
     list = LinkedList.new
     list.append('deep')
@@ -128,5 +138,15 @@ class LinkedListTest < Minitest::Test
     list.append('shu')
     list.append('blop')
     assert_equal false, list.include?('dep')
+  end
+
+  def test_pop_can_pop_the_last_node_data
+    list = LinkedList.new
+    list.append('deep')
+    list.append('woo')
+    list.append('shi')
+    list.append('shu')
+    list.append('blop')
+    assert_equal 'blop', list.pop
   end
 end

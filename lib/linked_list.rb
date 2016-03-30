@@ -29,6 +29,21 @@ attr_accessor :head, :data_array, :position
     end
   end
 
+  def prepend(data)
+    if head.nil?
+      @head = Node.new(data)
+    else
+      prepend_node(data)
+    end
+  end
+
+  def prepend_node(data)
+    @count += 1
+    current_node = Node.new(data)
+    current_node.next_node = @head
+    @head = current_node
+  end
+
   def count
     @count
   end
@@ -88,28 +103,25 @@ attr_accessor :head, :data_array, :position
 
   def include?(word)
     current_node = head
-    if
-    until current_node.data == word
+    until current_node == nil
+      return true if current_node.data == word
       current_node = current_node.next_node
     end
-    current_node.data == word
-  else
     false
   end
+
+  def pop
+    current_node = head
+    until current_node.next_node == nil
+      current_node = current_node.next_node
+    end
+    current_node.data
   end
+  # list.prepend("dop")
+  # => "dop"
+end
 
 
-
-  #   list.to_string
-  #  => "deep woo shi shu blop"
-  #  > list.find(2, 1)
-  #  => "shi"
-  #  > list.find(1, 3)
-  #  => "woo shi shu"
-  #  > list.includes?("deep")
-  #  => true
-  #  > list.includes?("dep")
-  #  => false
   #  > list.pop
   #  => "blop"
   #  > list.pop
@@ -118,4 +130,3 @@ attr_accessor :head, :data_array, :position
   #  => "deep woo shi"
     # def include?(data)
     # end
-  end
