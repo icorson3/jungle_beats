@@ -38,13 +38,16 @@ class LinkedListTest < Minitest::Test
     list.append('deep')
     assert_equal 'deep', list.to_string
   end
-# #
-# #   def test_can_find_a_tail
-#     list = LinkedList.new(nil)
-#     assert_equal nil, list.tail.data
-#     assert_equal nil, list.tail.next_node
-#   end
-# #
+
+  def test_can_find_a_tail
+    list = LinkedList.new
+    list.append('plop')
+    list.append('laugh')
+    list.append('bing')
+    assert_equal 'bing', list.tail.data
+    assert_equal nil, list.tail.next_node
+  end
+
   def test_can_append_the_list_more_than_once
     list = LinkedList.new
     list.append('doop')
@@ -96,7 +99,7 @@ class LinkedListTest < Minitest::Test
     list.append('suu')
     list.prepend('dop')
     assert_equal 'dop plop suu', list.to_string
-    assert_equal 3, list.count 
+    assert_equal 3, list.count
   end
 
   def test_can_find_by_position_and_pop_one
@@ -148,5 +151,10 @@ class LinkedListTest < Minitest::Test
     list.append('shu')
     list.append('blop')
     assert_equal 'blop', list.pop
+
+    assert_equal 4, list.count
+    assert_equal 'shu', list.pop
+    assert_equal 'deep woo shi', list.to_string
   end
+
 end

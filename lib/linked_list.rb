@@ -12,6 +12,14 @@ attr_accessor :head, :data_array, :position
     @head
   end
 
+  def tail
+    current_node = head
+    until current_node.next_node == nil
+      current_node = current_node.next_node
+    end
+    current_node
+  end
+
   def append(data)
     @count += 1
     if head.nil?
@@ -49,7 +57,7 @@ attr_accessor :head, :data_array, :position
   end
 
   def to_string
-    if @head == nil
+    if head == nil
       head.data
     else
       data_array = []
@@ -90,7 +98,7 @@ attr_accessor :head, :data_array, :position
       current_node = head
       count = 0
       until count == position
-        count += 1
+        count +=1
         current_node = current_node.next_node
       end
       string = ''
@@ -111,22 +119,14 @@ attr_accessor :head, :data_array, :position
   end
 
   def pop
-    current_node = head
-    until current_node.next_node == nil
-      current_node = current_node.next_node
+      @count -= 1
+      temp = tail.data
+      current_node = head
+      until current_node.next_node.next_node == nil
+        current_node = current_node.next_node
+      end
+      current_node.next_node = nil
+      temp
     end
-    current_node.data
-  end
-  # list.prepend("dop")
-  # => "dop"
+
 end
-
-
-  #  > list.pop
-  #  => "blop"
-  #  > list.pop
-  #  => "shu"
-  #  > list.to_string
-  #  => "deep woo shi"
-    # def include?(data)
-    # end
