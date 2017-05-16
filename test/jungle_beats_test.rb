@@ -4,6 +4,9 @@ require './lib/jungle_beats'
 
 class JungleBeatsTest < Minitest::Test
 
+  def test_test_test
+  end
+
   def test_new_beat_asserts_empty_linked_list
     jb = JungleBeats.new
     assert_equal nil, jb.linked_list.head
