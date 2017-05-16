@@ -5,7 +5,7 @@ require './lib/jungle_beats'
 class JungleBeatsTest < Minitest::Test
 
   def test_test_test
-    assert_equal 
+    assert_equal nil
   end
 
   def test_new_beat_asserts_empty_linked_list
